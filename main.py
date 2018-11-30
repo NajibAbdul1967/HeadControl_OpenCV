@@ -3,16 +3,24 @@ import pyautogui
 import cv2
 import numpy as np
 
-# multiple cascades: https://github.com/Itseez/opencv/tree/master/data/haarcascades
+#Init audio 
 
-#https://github.com/Itseez/opencv/blob/master/data/haarcascades/haarcascade_frontalface_default.xml
+#Init clicks and cursor
+
+#Init face detection
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-#https://github.com/Itseez/opencv/blob/master/data/haarcascades/haarcascade_eye.xml
-#eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
-
 cap = cv2.VideoCapture(0)
+#
 
-while 1:
+
+def move_cursor(mX,mY):
+    pass
+
+def listen_for_command():
+    pass
+
+
+def detect_face():
     ret, img = cap.read()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
@@ -22,16 +30,27 @@ while 1:
         roi_gray = gray[y:y+h, x:x+w]
         roi_color = img[y:y+h, x:x+w]
 
-        print(x,y)
-        
-        # = eye_cascade.detectMultiScale(roi_gray)
-        #for (ex,ey,ew,eh) in eyes:
-        #    cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+        #Middle of rectangle?
+        # mX = (x+w)/2
+        # mY = (y+h)/2
+
+        # Move screen
+        #move_mouse(mX,mY)
 
     cv2.imshow('img',img)
     k = cv2.waitKey(30) & 0xff
     if k == 27:
         break
+    
+
+
+
+
+while True:
+
+
+
+    
 
 cap.release()
 cv2.destroyAllWindows()
