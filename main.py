@@ -21,6 +21,13 @@ def listen_for_command():
 
 
 def detect_face():
+    pass
+    
+
+
+
+
+while 1:
     ret, img = cap.read()
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.3, 5)
@@ -31,9 +38,9 @@ def detect_face():
         roi_color = img[y:y+h, x:x+w]
 
         #Middle of rectangle?
-        # mX = (x+w)/2
-        # mY = (y+h)/2
-
+        mX = (x+w)/2
+        mY = (y+h)/2
+        print(mX,mY)
         # Move screen
         #move_mouse(mX,mY)
 
@@ -41,16 +48,12 @@ def detect_face():
     k = cv2.waitKey(30) & 0xff
     if k == 27:
         break
-    
-
-
-
-
-while True:
-
-
 
     
-
 cap.release()
 cv2.destroyAllWindows()
+
+
+
+    
+
